@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.karhim_app_jpc.navigation.AppNavigation
+import com.example.karhim_app_jpc.screens.FirstScreen
 import com.example.karhim_app_jpc.ui.theme.Karhim_App_JPCTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,28 +22,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             Karhim_App_JPCTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    AppNavigation()
                 }
             }
         }
     }
 }
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    Karhim_App_JPCTheme {
-        Greeting("Android")
-    }
+fun PrincipalDefaultPreview(){
+    AppNavigation()
 }
