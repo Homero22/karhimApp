@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import com.example.karhim_app_jpc.navigation.AppScreens
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,7 +40,8 @@ fun PrincipalBodyContent(navController: NavController){
     ) {
         Text(text = "Pantalla Principal")
         Button(onClick = {
-
+            //DIRIGIR A LA PANTALLA DE TARJETAS
+            navController.navigate(route = AppScreens.CardScreen.route)
         }) {
             Text(text = "Regresar")
         }

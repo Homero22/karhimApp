@@ -10,6 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.example.karhim_app_jpc"
         minSdk = 24
+
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -47,9 +48,46 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildToolsVersion = "34.0.0"
 }
 
 dependencies {
+    val composeBom = platform("androidx.compose:compose-bom:2024.06.00")
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
+    // Choose one of the following:
+    // Material Design 3
+    implementation(libs.material3)
+
+
+    // Android Studio Preview support
+    implementation(libs.ui.tooling.preview)
+    debugImplementation(libs.ui.tooling)
+
+    // UI Tests
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.test.manifest)
+
+    // Optional - Included automatically by material, only add when you need
+    // the icons but not the material library (e.g. when using Material3 or a
+    // custom design system based on Foundation)
+    implementation(libs.androidx.material.icons.core)
+    // Optional - Add full set of material icons
+    implementation(libs.androidx.material.icons.extended)
+    // Optional - Add window size utils
+    //implementation("androidx.compose.material3:material3-window-size-class")
+
+    // Optional - Integration with activities
+    implementation(libs.androidx.activity.compose.v190)
+    // Optional - Integration with ViewModels
+   // implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
+    // Optional - Integration with LiveData
+    implementation(libs.androidx.runtime.livedata)
+    // Optional - Integration with RxJava
+    implementation(libs.androidx.runtime.rxjava2)
+// For Kotlin users also import the Kotlin extensions library for Play Asset Delivery:
+    implementation("com.google.android.play:asset-delivery-ktx:2.2.2")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -58,7 +96,9 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    //implementation(libs.androidx.material3)
+    //implementation(libs.material3.z)
+    implementation(libs.androidx.material3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -68,22 +108,22 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     //navegacion
-    val nav_version = "2.7.7"
+
 
     // Java language implementation
-    implementation("androidx.navigation:navigation-fragment:$nav_version")
-    implementation("androidx.navigation:navigation-ui:$nav_version")
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
 
     // Kotlin
-    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
-    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     // Feature module Support
-    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+    implementation(libs.androidx.navigation.dynamic.features.fragment)
 
     // Testing Navigation
-    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+    androidTestImplementation(libs.androidx.navigation.testing)
 
     // Jetpack Compose Integration
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation(libs.androidx.navigation.compose)
 }
